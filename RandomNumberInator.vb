@@ -4,7 +4,7 @@
         Dim currentNumber As Integer
         Dim randomNumbers(5) As Integer
 
-        For i = 0 To 100000
+        For i = 0 To 10000
             currentNumber = GetRandomNumber(5)
             Select Case currentNumber
                 Case 0
@@ -23,6 +23,7 @@
                     MsgBox($"Hold on now.. got a {currentNumber}!", vbCritical)
             End Select
         Next
+
         Console.WriteLine(StrDup(39, "-"))
 
         For i = 0 To UBound(randomNumbers)
@@ -33,14 +34,9 @@
 
     End Sub
 
-    Function GetRandomNumber(maxNumber As Integer) As Single 'Integer
-        'Dim randomNumber As Integer
-        Dim randomNumber As Single
+    Function GetRandomNumber(maxNumber As Integer) As Integer
         Randomize(DateTime.Now.Millisecond)
-        'randomNumber = CInt(Rnd() * maxNumber)
-        randomNumber = Rnd() * maxNumber
-        Return randomNumber
-
+        Return CInt(Math.Floor(Rnd() * (maxNumber + 1)))
     End Function
 
 End Module
