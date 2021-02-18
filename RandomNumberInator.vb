@@ -1,35 +1,27 @@
-﻿Module RandomNumberInator
+﻿
 
+
+
+Module RandomNumberInator
     Sub Main()
-        Dim currentNumber As Integer
         Dim randomNumbers(5) As Integer
+        Dim someArrayOfThings(4, 8) As Boolean
+        Dim fudge As Integer
 
         For i = 0 To 10000
-            currentNumber = GetRandomNumber(5)
-            Select Case currentNumber
-                Case 0
-                    randomNumbers(0) += 1
-                Case 1
-                    randomNumbers(1) += 1
-                Case 2
-                    randomNumbers(2) += 1
-                Case 3
-                    randomNumbers(3) += 1
-                Case 4
-                    randomNumbers(4) += 1
-                Case 5
-                    randomNumbers(5) += 1
-                Case Else
-                    MsgBox($"Hold on now.. got a {currentNumber}!", vbCritical)
-            End Select
+            randomNumbers(GetRandomNumber(5)) += 1
         Next
-
-        Console.WriteLine(StrDup(39, "-"))
-
+        fudge = CInt((42 - 14) / 2)
+        Console.WriteLine(StrDup(fudge, " ") & "Random Numbers" & StrDup(fudge, " "))
+        Console.WriteLine(StrDup(42, "-"))
+        For i = 0 To 5 Step 1
+            Console.Write(Str(i).PadLeft(6) & "|")
+        Next
+        Console.WriteLine()
+        Console.WriteLine(StrDup(42, "-"))
         For i = 0 To UBound(randomNumbers)
-            Console.Write(CStr(randomNumbers(i)).PadLeft(6))
+            Console.Write(CStr(randomNumbers(i)).PadLeft(6) & "|")
         Next
-
         Console.Read()
 
     End Sub
@@ -38,5 +30,4 @@
         Randomize(DateTime.Now.Millisecond)
         Return CInt(Math.Floor(Rnd() * (maxNumber + 1)))
     End Function
-
 End Module
